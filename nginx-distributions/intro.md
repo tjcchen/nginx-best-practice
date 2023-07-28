@@ -8,5 +8,5 @@
    - By integrating Nginx with Lua, Openresty gives high concurrency, web apps, web services, and dynamic api gateway a good support.
 
 4. Tengine  (OOS): https://tengine.taobao.org
-   - Added modules are implemented with C.
+   - Added modules that are implemented with C.
 

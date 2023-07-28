@@ -9,7 +9,7 @@ linux dir: /etc/nginx/available-sites/default
 2. Set one upstream directive for each microservice
 
 
-3. Use location and proxy_pass directive to create routes to the upstream microservice servers
+3. Use location and proxy_pass directives to create routes for the upstream microservice servers
 
 
 ## Simple Example
