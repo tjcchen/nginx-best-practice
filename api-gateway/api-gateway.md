@@ -1,9 +1,9 @@
 ## Configuring the API gateway
 1. Edit your nginx config file:
 
-mac dir: /usr/local/etc/nginx/default.conf
+  - mac dir: /usr/local/etc/nginx/default.conf
 
-linux dir: /etc/nginx/available-sites/default
+  - linux dir: /etc/nginx/available-sites/default
 
 
 2. Set one upstream directive for each microservice
