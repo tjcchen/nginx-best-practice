@@ -50,15 +50,16 @@ sudo systemctl enable nginx
 # most commonly used nginx commands (need to switch to root role first, eg: sudo su -)
 start: nginx
 stop: nginx -s stop
-quit: nginx -s quit
-reload: nginx -s reload
+quit (stop gently): nginx -s quit
+reload (reload config): nginx -s reload
 
 # systemctl version
 start: systemctl start nginx
 stop: systemctl stop nginx
-quit: systemctl quit nginx
-reload: systemctl reload nginx
+quit (stop gently): systemctl quit nginx
+reload (reload config): systemctl reload nginx
 check status: systemctl status nginx
+start nginx at boots: systemctl enable nginx
 
 # check amazon linux public ip
 dig +short myip.opendns.com @resolver1.opendns.com
@@ -66,7 +67,14 @@ or
 curl http://checkip.amazonaws.com
 
 # after service is up, then we can access ip address to see server up information
+# and with `master process`, and `worker process` started
 eg: http://35.172.190.158/
+
+# nginx service script
+vi /usr/lib/systemd/system/nginx.service
+
+# restart the machine (do not use in production)
+reboot
 ```
 
 # Links
