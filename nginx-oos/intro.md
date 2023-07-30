@@ -26,6 +26,7 @@ cat /etc/os-release
 # Installing Nginx on Amazon Linux 2023
 #======================================
 # DNF is a software package manager that installs, updates, and removes packages on Fedora and is the successor to YUM(Yellow-Dog Updater Modified)
+# after successfully intalled nginx, we can check config at: /etc/nginx/nginx.conf
 1. update your package repository
 sudo dnf update -y
 
@@ -45,8 +46,30 @@ sudo systemctl status nginx
 
 5. enable nginx at boots up (if needed)
 sudo systemctl enable nginx
+
+# most commonly used nginx commands (need to switch to root role first, eg: sudo su -)
+start: nginx
+stop: nginx -s stop
+quit: nginx -s quit
+reload: nginx -s reload
+
+# systemctl version
+start: systemctl start nginx
+stop: systemctl stop nginx
+quit: systemctl quit nginx
+reload: systemctl reload nginx
+check status: systemctl status nginx
+
+# check amazon linux public ip
+dig +short myip.opendns.com @resolver1.opendns.com
+or
+curl http://checkip.amazonaws.com
+
+# after service is up, then we can access ip address to see server up information
+eg: http://35.172.190.158/
 ```
 
 # Links
 Amazon Linux 2023: https://docs.aws.amazon.com/linux/al2023/ug/managing-repos-os-updates.html
 
+Nginx Documentation: http://nginx.org/en/docs/
