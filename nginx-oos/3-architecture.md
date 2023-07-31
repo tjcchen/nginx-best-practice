@@ -1,9 +1,7 @@
 ## Nginx Running Principle and Architecture
 
 
-
-![architecture](/Users/chen/Desktop/Nginx/architecture.png)
-
+![architecture](https://github.com/tjcchen/nginx-best-practice/assets/6133656/01894dc5-ee28-4ff0-8628-7d683a511a44)
 
 
 NGINX follows the master-slave architecture by supporting event-driven, asynchronous and non-blocking model.
