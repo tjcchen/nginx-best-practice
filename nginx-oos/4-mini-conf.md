@@ -6,12 +6,12 @@ ssh -i "first-aws-ec2.pem" ec2-user@ec2-35-172-190-158.compute-1.amazonaws.com
 ```
 
 ```conf
-# number of worker processes - should be configured based CPU kernels
+# number of worker processes - should be configured based on CPU kernels
 worker_processes 1;
 
 # event-driven module
 events {
-  # number of connections each worker process can build
+  # number of connections that each worker process could build
   worker_connections 1024;
 }
 
@@ -25,10 +25,10 @@ http {
   # send resources to users directly without reading to nginx memory
   sendfile on;
 
-  # timeout time of keeping connections
+  # timeout time for keeping connections
   keepalive_timeout 65;
 
-  # virtual server host - we could multiple server hosts config
+  # virtual server host - we could have multiple server hosts config
   server {
     # listen on port 80
     listen 80;
@@ -53,5 +53,4 @@ http {
     };
   }
 }
-
 ```
