@@ -1,4 +1,4 @@
-## Nginx Directory Structure and Running Principle
+## Nginx Directory Structure
 ```bash
 # login to your remote vps
 ssh -i "first-aws-ec2.pem" ec2-user@ec2-35-172-190-158.compute-1.amazonaws.com
