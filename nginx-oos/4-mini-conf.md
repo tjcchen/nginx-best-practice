@@ -41,7 +41,7 @@ http {
       # static html path, could be relative or absolute
       root html;
       # static page; in this case, it is html/index.html
-      index index.html index.htm
+      index index.html index.htm;
     }
 
     # when internal error occurs, we redirect to /50x.html page
@@ -50,7 +50,7 @@ http {
     location = /50x.html {
       # find /50x.html from html dir
       root html;
-    };
+    }
   }
 }
 ```

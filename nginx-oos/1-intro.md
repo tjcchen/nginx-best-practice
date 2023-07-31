@@ -75,6 +75,9 @@ vi /usr/lib/systemd/system/nginx.service
 
 # restart the machine (do not use in production)
 reboot
+
+# unzip and open a gz file using
+gunzip archive.gz
 ```
 
 # Links
