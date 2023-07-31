@@ -17,7 +17,7 @@
 ```conf
 http {
   upstream shipping {
-    server 162.243.144.211:8081; # we can add multiple server directive to support load balancer
+    server 162.243.144.211:8081; # we can add multiple server directives to support load balancer
   }
 
   upstream reporting {
@@ -27,7 +27,7 @@ http {
   server {
     listen 80;
 
-    # the url http://www.example.com/shipping to use upstream shipping server config
+    # the url http://www.example.com/shipping will use upstream shipping server config
     location /shipping/ {
       proxy_pass http://shipping/;
     }
