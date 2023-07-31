@@ -4,6 +4,7 @@
 ssh -i "first-aws-ec2.pem" ec2-user@ec2-35-172-190-158.compute-1.amazonaws.com
 
 # list all the nginx config
+# etc dir means: Editable Text Configuration
 # eg: /etc/nginx/
 ll /etc/nginx/
 
