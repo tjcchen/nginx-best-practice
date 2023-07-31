@@ -1,0 +1,57 @@
+## A Minimum Nginx Conf Setting
+
+```bash
+# login to your remote vps
+ssh -i "first-aws-ec2.pem" ec2-user@ec2-35-172-190-158.compute-1.amazonaws.com
+```
+
+```conf
+# number of worker processes - should be configured based CPU kernels
+worker_processes 1;
+
+# event-driven module
+events {
+  # number of connections each worker process can build
+  worker_connections 1024;
+}
+
+# http module
+http {
+  # include a mime.types( response header ) file - we could also include multpile files
+  # default type to application/octet-stream
+  include mime.types;
+  default_type application/octet-stream;
+
+  # send resources to users directly without reading to nginx memory
+  sendfile on;
+
+  # timeout time of keeping connections
+  keepalive_timeout 65;
+
+  # virtual server host - we could multiple server hosts config
+  server {
+    # listen on port 80
+    listen 80;
+    # domain name, host name can be configured at this place
+    server_name localhost;
+
+    # uri definition
+    # eg: http://example.com/mypath/index.html, `/mypath/index.html` is uri
+    location / {
+      # static html path, could be relative or absolute
+      root html;
+      # static page; in this case, it is html/index.html
+      index index.html index.htm
+    }
+
+    # when internal error occurs, we redirect to /50x.html page
+    # eg: http://example.com/50x.html
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+      # find /50x.html from html dir
+      root html;
+    };
+  }
+}
+
+```
