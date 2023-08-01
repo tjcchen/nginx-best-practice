@@ -20,10 +20,10 @@
 - Use cases: http://tjcchen.org
 
 
-### Multiple Port Access
+### Multiple Ports Access
 
 To allow multiple ports access, like http://35.172.190.158:8080/ or http://35.172.190.158:8081/,
-We need to open port support on host's specific security group.
+we need to open port support on host's specific security group.
 
 
 ### One Host/IP supporting multiple domain names
@@ -81,7 +81,7 @@ www.tjcchen.org -> 35.172.190.158
 video.tjcchen.org -> 35.172.190.158
 ```
 
-### Multiple Domains In One Server Config
+### Multiple Domain names In One Server Config
 ```conf
 server {
     listen       80;
@@ -119,7 +119,7 @@ server {
 
 1. Multi-User Domain System: jammes.tjcchen.org, jimmy.tjcchen.org, lily.tjcchen.org
 
-Implementation:
+- Implementation:
 
 - wildcard domain server_name matching. eg: *.tjcchen.org
 
