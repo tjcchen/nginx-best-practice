@@ -82,3 +82,37 @@ server {
 www.tjcchen.org -> 35.172.190.158
 video.tjcchen.org -> 35.172.190.158
 ```
+
+### Multiple Domains In One Server Config
+```conf
+server {
+    listen       80;
+    listen       [::]:80;
+    # conclusion: we can use server_name config to accept all the http requests,
+    # then uses different routing logic to handle it.
+    # 1. support video, video1 domains
+    # server_name  video.tjcchen.org video1.tjcchen.org;
+    # 2. support wilcard matching suffix, like www.tjcchen.com, www.tjcchen.ca
+    # server_name  www.tjcchen.*;
+    # 3. support regExp matching, domain start with a number
+    # server_name ~^[0-9]+\.tjcchen\.org$;
+    # 4. support wilcard matching prefix, like example.tjcchen.org. note only one server_name directive could exist
+    server_name  *.tjcchen.org;
+    root         /www/video;
+
+    # Load configuration files for the default server block.
+    # include /etc/nginx/default.d/*.conf;
+
+    location / {
+    index index.html index.htm;
+    }
+
+    error_page 404 /404.html;
+    location = /404.html {
+    }
+
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+    }
+}
+```
