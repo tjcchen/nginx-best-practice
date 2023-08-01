@@ -26,3 +26,59 @@ Use cases: http://tjcchen.org
 
 To allow multiple ports access, like http://35.172.190.158:8080/ or http://35.172.190.158:8081/,
 We need to open port support on host's specific security group.
+
+
+### One Host/IP supporting multiple domain names
+
+```conf
+# 1. adding multiple servers config to your nginx.conf
+# domain config for www.tjcchen.org
+server {
+    listen       80;
+    listen       [::]:80;
+    server_name  www.tjcchen.org;
+    root         /www/www;
+
+    # Load configuration files for the default server block.
+    include /etc/nginx/default.d/*.conf;
+
+    location / {
+    index index.html index.htm;
+    }
+
+    error_page 404 /404.html;
+    location = /404.html {
+    }
+
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+    }
+}
+
+# domain config for video.tjcchen.org
+server {
+    listen       80;
+    listen       [::]:80;
+    server_name  video.tjcchen.org;
+    root         /www/video;
+
+    # Load configuration files for the default server block.
+    # include /etc/nginx/default.d/*.conf;
+
+    location / {
+    index index.html index.htm;
+    }
+
+    error_page 404 /404.html;
+    location = /404.html {
+    }
+
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+    }
+}
+
+# 2. adding A record on your Amazon Route 53
+www.tjcchen.org -> 35.172.190.158
+video.tjcchen.org -> 35.172.190.158
+```
