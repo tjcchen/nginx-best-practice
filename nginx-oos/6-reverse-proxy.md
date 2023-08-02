@@ -47,7 +47,12 @@ server {
     location / {
       # note: `proxy_pass` and `root` cannot be coexisted
       # https redirect is not yet supported
-      proxy_pass http://www.tjcchen.com;
+      # proxy_pass http://www.tjcchen.com;
+
+      # reverse proxy for current host (35.172.190.158) to another host (54.90.189.4)
+      # http://35.172.190.158/?abc=123 will show content of http://54.90.189.4
+      proxy_pass http://54.90.189.4;
+
       # index index.html index.htm;
     }
 
@@ -59,5 +64,13 @@ server {
     location = /50x.html {
     }
 }
+```
+
+### Sub Servers Info
+```bash
+# serv1
+ssh -i "first-aws-ec2.pem" ec2-user@ec2-54-90-189-4.compute-1.amazonaws.com
+
+
 ```
 
