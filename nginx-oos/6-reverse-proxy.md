@@ -24,3 +24,10 @@
 - Security
   - By intercepting requests headed for your backend servers, a reverse proxy server protects their identities and acts as an additional defense against security attacks. It also ensures that multiple servers can be accessed from a single record locator or URL regardless of the structure of your local area network.
 
+### Nginx Tips
+
+- Url Rewrite
+  - convert a service endpoint to regular url address
+  - eg: /item/100 -> /itemService?id=100
+  - eg: /item/100.html, friendly to SEO
+
