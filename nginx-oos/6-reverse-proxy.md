@@ -31,3 +31,33 @@
   - eg: /item/100 -> /itemService?id=100
   - eg: /item/100.html, friendly to SEO
 
+
+### Example Config of Reverse Proxy
+```conf
+# server proxy_pass
+server {
+    listen       80;
+    listen       [::]:80;
+    server_name  www.tjcchen.org;
+    # root         /www/www;
+
+    # Load configuration files for the default server block.
+    include /etc/nginx/default.d/*.conf;
+
+    location / {
+      # note: `proxy_pass` and `root` cannot be coexisted
+      # https redirect is not yet supported
+      proxy_pass http://www.tjcchen.com;
+      # index index.html index.htm;
+    }
+
+    error_page 404 /404.html;
+    location = /404.html {
+    }
+
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+    }
+}
+```
+
