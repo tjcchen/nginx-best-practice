@@ -50,7 +50,8 @@ server {
       # proxy_pass http://www.tjcchen.com;
 
       # reverse proxy for current host (35.172.190.158) to another host (54.90.189.4)
-      # http://35.172.190.158/?abc=123 will show content of http://54.90.189.4
+      # 1. http://35.172.190.158/?abc=123 will show content of http://54.90.189.4
+      # 2. http://www.tjcchen.org/?abc=123 will show content http://54.90.189.4 as well
       proxy_pass http://54.90.189.4;
 
       # index index.html index.htm;
