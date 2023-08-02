@@ -10,6 +10,9 @@
 <img width="768" alt="reverse-proxy" src="https://github.com/tjcchen/nginx-best-practice/assets/6133656/b3036472-28f6-498c-9598-e7259bfbe986">
 
 
+<img width="993" alt="be-server-cluster" src="https://github.com/tjcchen/nginx-best-practice/assets/6133656/7adf1a42-45d0-4cb4-9b2d-21949e642980">
+
+
 ### Common Uses For A Reverse Proxy Server
 
 - Load Balancing
