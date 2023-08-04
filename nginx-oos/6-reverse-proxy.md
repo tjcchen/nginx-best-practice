@@ -69,9 +69,16 @@ server {
 
 ### Sub Servers Info
 ```bash
+# main
+ssh -i "first-aws-ec2.pem" ec2-user@ec2-35-172-190-158.compute-1.amazonaws.com
+ip: 35.172.190.158
+
 # serv1
 ssh -i "first-aws-ec2.pem" ec2-user@ec2-54-90-189-4.compute-1.amazonaws.com
+ip: 54.90.189.4
 
-
+# serv2
+ssh -i "first-aws-ec2.pem" ec2-user@ec2-54-208-140-76.compute-1.amazonaws.com
+ip: 54.208.140.76
 ```
 
