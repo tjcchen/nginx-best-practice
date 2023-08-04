@@ -1,7 +1,8 @@
 ## Load Balancer Strategies
 
 - weight (forward requests as per machine & network performances)
-
+- down (make the current server down)
+- backup (a backup machine - when other servers are all down, we will use this backup machine)
 
 ### Login Config
 ```bash
@@ -25,9 +26,12 @@ ip: 3.89.65.247
 ### Weight
 ```conf
 upstream servers {
-    server 54.90.189.4:80 weight=8;
-    server 54.208.140.76:80 weight=2;
-    server 3.89.65.247:80 weight=1;
+    # weight - the higher the weight, the more traffic the machine will receive
+    # down - make the server down
+    # backup - a backup machine
+    server 54.90.189.4 weight=8 down;
+    server 54.208.140.76 weight=2;
+    server 3.89.65.247 weight=1 backup;
 }
 
 server {
