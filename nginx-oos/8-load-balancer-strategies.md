@@ -4,6 +4,12 @@
 - down (make the current server down)
 - backup (a backup machine - when other servers are all down, we will use this backup machine)
 
+less used:
+- ip_hash (keep session connection based on IP address)
+- least_conn (number of least connections)
+- fair (allocate requests based on server response time, 3rd party plugin needed)
+- url_hash (redirect request based on users' url, 3rd party plugin needed)
+
 ### Login Config
 ```bash
 # main
@@ -56,3 +62,13 @@ server {
     }
 }
 ```
+
+### Disadvantages of Round-robin Load Balancing
+
+- Can't keep session connection on any machines (eg: login flow)
+
+### How to keep session connection in an microservice architecture
+
+- Spring Session (store session in one machine with redis)
+
+- Auth server, token
