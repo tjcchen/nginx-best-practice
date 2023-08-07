@@ -13,6 +13,7 @@
 
 ## Static and Dynamic Separation Config
 ```conf
+# css/js/img config separately
 server {
     listen       80;
     listen       [::]:80;
@@ -45,6 +46,39 @@ server {
     }
 
     location /img {
+    }
+
+    error_page 404 /404.html;
+    location = /404.html {
+    }
+
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+    }
+}
+
+# regExp matching for route css/js/img
+server {
+    listen       80;
+    listen       [::]:80;
+    server_name  www.tjcchen.org;
+
+    # static and dynamic separation
+    root /usr/share/nginx/html;
+
+    location / {
+        # static and dynamic separation
+        proxy_pass http://54.208.140.76;
+    }
+
+    # regExp route matching for css/js/img directory
+    # static and dynamic separation
+    # css/js/img
+    # /css /js /img folders need to be placed under /usr/share/nginx/html
+
+    # ~: use regExp
+    # *: case insensitative
+    location ~*/(js|img|css) {
     }
 
     error_page 404 /404.html;
