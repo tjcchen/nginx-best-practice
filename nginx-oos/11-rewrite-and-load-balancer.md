@@ -21,6 +21,9 @@ systemctl start firewalld
 # restart the firewall
 systemctl restart firewalld
 
+# stop firewall
+systemctl stop firewalld
+
 # reload regulations
 firewall-cmd --reload
 
@@ -44,7 +47,11 @@ public
 	  rule family="ipv4" source address="35.172.190.158" port port="80" protocol="tcp" accept
 
 # add rule: only specific port and ip can access the current machine( after configuration, firewall reload is needed )
+# note: cannot add current ip to current firewall config
 firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="35.172.190.158" port protocol="tcp" port="80" accept"
+
+# remove rule:
+firewall-cmd --permanent --remove-rich-rule="rule family="ipv4" source address="35.172.190.158" port protocol="tcp" port="80" accept"
 ```
 
 ### Login Config
