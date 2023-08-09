@@ -11,7 +11,11 @@
 
 ```bash
 # current IP: 54.208.140.76
-# start the firewall
+
+# install firewall on Amazon Linux 2023
+yum install firewalld -y
+
+# start the firewall ( after the firewall is started, reverse proxy to this machine cannot be accessed )
 systemctl start firewalld
 
 # restart the firewall
@@ -22,8 +26,24 @@ firewall-cmd --reload
 
 # check regulations
 firewall-cmd --list-all
+eg:
+public
+  target: default
+  icmp-block-inversion: no
+  interfaces:
+  sources:
+  services: dhcpv6-client mdns ssh
+  ports:
+  protocols:
+  forward: yes
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+	  rule family="ipv4" source address="35.172.190.158" port port="80" protocol="tcp" accept
 
-# add rule: specific port and ip can access the current machine
+# add rule: only specific port and ip can access the current machine( after configuration, firewall reload is needed )
 firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="35.172.190.158" port protocol="tcp" port="80" accept"
 ```
 
