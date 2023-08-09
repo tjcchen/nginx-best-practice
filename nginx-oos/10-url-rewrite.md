@@ -39,6 +39,9 @@ server {
         # eg3: redirect flag will expose the real url address, like http://35.172.190.158/index.jsp?pageNum=123
         rewrite ^/([0-9]+).html$   /index.jsp?pageNum=$1   redirect;
 
+        # a simple custom config, /ab.html -> /about.html
+        rewrite ^/ab.html$ /about.html break;
+
 
         # rewrite flags
         # last: This flag will stop the processing of the rewrite directives in the current set, and will start at the new location that matches the changed URL( multiple url rewrite regulations ).

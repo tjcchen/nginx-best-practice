@@ -68,3 +68,36 @@ ip: 54.90.189.4
 ssh -i "first-aws-ec2.pem" ec2-user@ec2-54-208-140-76.compute-1.amazonaws.com
 ip: 54.208.140.76
 ```
+
+```conf
+# load balancer config
+
+# in this case, only the 54.208.140.76 server could work
+upstream httpds {
+  server 54.90.189.4 weight=8 down;
+  server 54.208.140.76 weight=1 backup;
+}
+
+server {
+    listen       80;
+    listen       [::]:80;
+    server_name  www.tjcchen.org;
+
+    # static and dynamic separation
+    root /usr/share/nginx/html;
+
+    # Load configuration files for the default server block.
+    include /etc/nginx/default.d/*.conf;
+
+    location / {
+      # url rewrite
+      # rewrite ^/([0-9]+).html$   /index.jsp?pageNum=$1   break;
+      rewrite ^/ab.html$ /about.html break;
+
+      # static and dynamic separation
+      proxy_pass http://httpds;
+    }
+
+    # ...
+}
+```
