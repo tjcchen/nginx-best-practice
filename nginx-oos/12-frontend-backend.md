@@ -1,4 +1,4 @@
-## Simple BE & FE Nginx Config
+## Sample Backend & Frontend Nginx Config
 ```conf
 server {
     listen 80;
